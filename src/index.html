@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Backendless Project Template</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="container d-flex flex-column p-4">
+  <div class="text-center pb-4">
+    <a href="//backendless.com/" target="_blank">
+      <img src="//backendless.com/wp-content/themes/backendless/img/logo.png"/>
+    </a>
+  </div>
+  <div class="panel d-flex flex-fill flex-column p-2 text-center">
+    <p id="create-obj-status" class="mb-5">please wait...</p>
+
+    <div id="modifier-panel" class="d-none">
+      <h5>Live update object property:</h5>
+      <h2 id="current-value"></h2>
+
+      <div>
+        <div class="m-4">
+          <input id="input" class="form-control" placeholder="change property value">
+        </div>
+
+        <button id="update-btn" class="btn btn-primary">UPDATE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="//api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+<script src="js/registration.js"></script>
+</body>
+</html>

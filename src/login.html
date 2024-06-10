@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | SocioHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+</head>
+<body>
+<div class="container">
+    <div class="title">Login</div>
+    <div class="content">
+        <form id="loginForm">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="text" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+            </div>
+            <div class="forgot-password-link">
+                <a href="forgot-password.html">Forgot Password?</a>
+            </div>
+            <div class="button-container">
+                <div class="button">
+                    <input type="submit" value="Login">
+                </div>
+                <div class="button register-button">
+                    <input type="button" value="Register" onclick="window.location.href='registration.html'">
+                </div>
+            </div>
+            <div id="errorMessage" style="color: red; margin-top: 20px;"></div>
+        </form>
+    </div>
+</div>
+<script src="https://api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+<script src="js/login.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>
+
