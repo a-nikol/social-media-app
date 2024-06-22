@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile | SocioHub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/profile-edit.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header>
+    <nav>
+        <a id="profileLink" href="#">Profile</a>
+        <a id="myFilesLink" href="../1practice/home.html">My Files</a>
+        <a id="myPLacesLink" href="places.html">My Places</a>
+    </nav>
+    <a id="logout" href="#">Logout</a>
+</header>
+<div class="container">
+    <div class="title">
+        <button id="backButton" onclick="window.location.href='profile.html'"><i class="fas fa-arrow-left"></i></button>
+        <span id="titleText">Edit Profile</span>
+    </div>
+    <div class="content">
+        <form id="editProfileForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" id="country">
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate">
+            </div>
+            <div class="gender-details">
+                <input type="radio" name="gender" id="dot-1" value="male">
+                <input type="radio" name="gender" id="dot-2" value="female">
+                <input type="radio" name="gender" id="dot-3" value="other">
+                <span class="gender-title">Gender</span>
+                <div class="category">
+                    <label for="dot-1">
+                        <span class="dot one"></span>
+                        <span class="gender">Male</span>
+                    </label>
+                    <label for="dot-2">
+                        <span class="dot two"></span>
+                        <span class="gender">Female</span>
+                    </label>
+                    <label for="dot-3">
+                        <span class="dot three"></span>
+                        <span class="gender">Other</span>
+                    </label>
+                </div>
+            </div>
+            <div class="button-container">
+                <div class="button">
+                    <input type="submit" value="Save Changes">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="overlay" class="hidden"></div>
+<div id="popup" class="hidden">
+    <p id="popupMessage"></p>
+    <p id="closeMessage"></p>
+</div>
+<script src="https://api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+<script src="../../js/2practice/profile-edit.js" defer></script>
+<script src="../../js/app.js" defer></script>
+</body>
+</html>

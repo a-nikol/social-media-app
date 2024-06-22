@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Places | SocioHub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/places.css" type="text/css">
+</head>
+<body>
+<header>
+    <nav>
+        <a id="profileLink" href="#">Profile</a>
+        <a id="myFilesLink" href="../1practice/home.html">My Files</a>
+        <a id="myPLacesLink" href="places.html">My Places</a>
+    </nav>
+    <a id="logout" href="#">Logout</a>
+</header>
+<div class="container">
+    <div class="title">
+        <div class="left-section">
+            <span id="titleText">My Places</span>
+        </div>
+        <div class="right-section" id="right-section">
+            <button id="findPlacesButton" onclick="window.location.href='places-find.html'">Find Places</button>
+            <button id="addPlaceButton" onclick="window.location.href='places-add.html'">Add Place</button>
+        </div>
+    </div>
+    <div class="content">
+        <div id="placesContainer"></div>
+    </div>
+</div>
+<div id="overlay" class="hidden"></div>
+<div id="popup" class="hidden">
+    <p id="popupMessage"></p>
+    <p id="closeMessage"></p>
+</div>
+<script src="https://api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+<script src="../../js/2practice/places.js" defer></script>
+<script src="../../js/app.js" defer></script>
+</body>
+</html>

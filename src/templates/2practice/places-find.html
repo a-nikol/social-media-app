@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Places | SocioHub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/places.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+<header>
+    <nav>
+        <a id="profileLink" href="#">Profile</a>
+        <a id="myFilesLink" href="../1practice/home.html">My Files</a>
+        <a id="myPlacesLink" href="places.html">My Places</a>
+    </nav>
+    <a id="logout" href="#">Logout</a>
+</header>
+<div class="container">
+    <div class="title">
+        <div class="left-section">
+            <span id="titleText">Find Places</span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="button-container-search">
+            <button id="nameButton">Name</button>
+            <button id="categoriesButton">Categories</button>
+            <button id="locationButton">Location</button>
+        </div>
+
+        <div id="nameSearchContainer" class="search-section">
+            <div class="search-section-inside">
+                <input type="text" id="placeName" placeholder="Search by place name" style="flex: 1;">
+                <button id="searchByNameButton"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+
+        <div id="categoriesSearchContainer" class="search-section">
+            <div class="search-section-inside">
+                <input type="text" id="categoryName" placeholder="Search by category" style="flex: 1;">
+                <button id="searchByCategoryButton"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <div id="locationSearchContainer" class="search-section">
+            <div class="search-section-inside">
+                <input type="number" id="searchRadius" placeholder="Search radius in meters" style="flex: 1" ;>
+                <button id="customLocationButton"><i class="fas fa-search"></i></button>
+            </div>
+            <div style="margin: 20px 0"><label for="latitude">Choose searching place on map or use current
+                location:</label></div>
+            <div class="coordinates">
+                <input type="text" id="latitude" placeholder="Enter latitude" class="hidden">
+                <input type="text" id="longitude" placeholder="Enter longitude" class="hidden">
+            </div>
+            <div id="map"></div>
+            <input type="checkbox" id="trackLocation" class="custom-checkbox">
+            <label for="trackLocation" class="custom-label" style="margin-top: 20px">Use my location</label>
+        </div>
+    </div>
+    <div id="placesContainer"></div>
+</div>
+<div id="overlay" class="hidden"></div>
+<div id="popup" class="hidden">
+    <p id="popupMessage"></p>
+    <p id="closeMessage"></p>
+</div>
+<script src="https://api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+<script src="../../js/2practice/places-find.js" defer></script>
+<script src="../../js/2practice/places-add.js" defer></script>
+<script src="../../js/2practice/places.js" defer></script>
+<script src="../../js/app.js" defer></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    document.getElementById('nameButton').addEventListener('click', function () {
+        showContainer('nameSearchContainer');
+    });
+
+    document.getElementById('categoriesButton').addEventListener('click', function () {
+        showContainer('categoriesSearchContainer');
+    });
+
+    document.getElementById('locationButton').addEventListener('click', function () {
+        showContainer('locationSearchContainer');
+    });
+
+    function showContainer(containerId) {
+        const searchSections = document.querySelectorAll('.search-section');
+        searchSections.forEach(section => section.style.display = 'none');
+        const container = document.getElementById(containerId);
+        container.style.display = 'block';
+    }
+</script>
+</body>
+</html>

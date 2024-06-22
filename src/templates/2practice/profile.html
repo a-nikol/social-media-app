@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile | SocioHub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/profile.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header>
+    <nav>
+        <a id="profileLink" href="#">Profile</a>
+        <a id="myFilesLink" href="../1practice/home.html">My Files</a>
+        <a id="myPLacesLink" href="places.html">My Places</a>
+    </nav>
+    <a id="logout" href="#">Logout</a>
+</header>
+<div class="container">
+    <div class="title">
+        <span id="titleText">User Profile</span>
+    </div>
+    <div class="profile-content">
+        <div class="profile-picture">
+            <div>
+                <img id="profileImage" src="" alt="Profile Picture">
+                <button id="changeProfileImg">+</button>
+            </div>
+            <select id="pfpSelect" class="styled-select" style="display:none;"></select>
+        </div>
+        <div class="profile-form">
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <input type="text" id="country" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">Birthdate:</label>
+                    <input type="date" id="birthdate" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <input type="text" id="gender" readonly>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="trackLocation" class="custom-checkbox">
+                    <label for="trackLocation" class="custom-label">Track My Location</label>
+                </div>
+                <div class="button-container">
+                    <div class="button">
+                        <input type="button" value="Edit Details" id="editButton"
+                               onclick="window.location.href='profile-edit.html'">
+                    </div>
+                    <div class="button">
+                        <input type="button" value="Change password" id="editPasswordButton"
+                               onclick="window.location.href='profile-edit-password.html'">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="overlay" class="hidden"></div>
+<div id="popup" class="hidden">
+    <p id="popupMessage"></p>
+    <p id="closeMessage"></p>
+</div>
+<input type="file" id="fileInput" style="display: none;">
+<script src="https://api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+<script src="../../js/2practice/profile.js" defer></script>
+<script src="../../js/app.js" defer></script>
+</body>
+</html>

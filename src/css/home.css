@@ -33,7 +33,7 @@ header nav {
     align-items: center;
 }
 
-header nav a {
+header nav a, header a#logout {
     margin: 0 10px;
     background: white;
     border-radius: 5px;
@@ -45,9 +45,13 @@ header nav a {
     cursor: pointer;
 }
 
-header nav a:hover {
+header nav a:hover, header a#logout:hover {
     background: #71b7e6;
     color: white;
+}
+
+header a#logout {
+    margin-left: auto;
 }
 
 .container {

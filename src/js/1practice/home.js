@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Extracting the link to the shared file
             function fetchSharedFileUrl(filePath) {
-                let isSuccess = false; // Flag to indicate whether URL retrieval was successful
+                let isSuccess = false;
                 return fetch(`https://aholicspot-us.backendless.app/api/files/${filePath}`)
                     .then(response => {
                         if (!response.ok) {
@@ -389,7 +389,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 contextMenu.style.display = 'none';
             });
 
-
             // Back button to switch directories back
             const backButton = document.getElementById('backButton');
             backButton.addEventListener('click', function () {
@@ -414,48 +413,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     currentItem.removeEventListener('click', () => {});
                 }, { once: true });
             });
-
-            function showPopup(message) {
-                const overlay = document.getElementById('overlay');
-                const popup = document.getElementById('popup');
-                const popupMessage = document.getElementById('popupMessage');
-                const closeMessage = document.getElementById('closeMessage');
-
-                popupMessage.textContent = message;
-                closeMessage.textContent = "This window will close automatically within 3 seconds";
-                overlay.classList.remove('hidden');
-                popup.classList.remove('hidden');
-
-                setTimeout(function () {
-                    popup.classList.add('hidden');
-                    overlay.classList.add('hidden');
-                }, 5000);
-            }
-
-            function showPromptPopup(message, callback) {
-                const promptOverlay = document.getElementById('overlay');
-                const promptPopup = document.getElementById('promptPopup');
-                const promptMessage = document.getElementById('popupPrompt');
-                const promptInput = document.getElementById('promptInput');
-                const promptSubmit = document.getElementById('promptSubmit');
-
-                promptMessage.textContent = message;
-                promptInput.value = '';
-                promptOverlay.classList.remove('hidden');
-                promptPopup.classList.remove('hidden');
-
-                function handleSubmit() {
-                    const inputValue = promptInput.value.trim();
-                    if (inputValue) {
-                        callback(inputValue);
-                    }
-                    promptPopup.classList.add('hidden');
-                    promptOverlay.classList.add('hidden');
-                    promptSubmit.removeEventListener('click', handleSubmit);
-                }
-                promptSubmit.addEventListener('click', handleSubmit);
-            }
-
         })
         .catch(function (error) {
             alert("Error: " + error.message);
