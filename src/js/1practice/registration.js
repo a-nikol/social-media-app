@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
               errorMessage.style.display = "none";
               successMessage.innerText = "User registered successfully! Check your email to enable account!";
               setTimeout(function () {
-                window.location.href = 'login.html';
+                window.location.href = "../1practice/login.html";
               }, 5000);
             })
             .catch(function (error) {

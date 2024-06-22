@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(function (currentUser) {
             if (!currentUser) {
                 alert("User not logged in");
-                window.location.href = 'login.html';
+                window.location.href = "../1practice/login.html";
                 return;
             }
 
@@ -21,8 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const profileImage = document.getElementById('profileImage');
+            const defaultProfilePic = 'https://archive.org/download/twitter-default-pfp/e.png';
+
             if (currentUser.profile_pic) {
                 profileImage.src = currentUser.profile_pic;
+            } else {
+                profileImage.src = defaultProfilePic;
             }
 
             // User tries to change profile pic
@@ -76,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error fetching user data or schema", error);
             Backendless.UserService.logout()
                 .then(function () {
-                    window.location.href = 'login.html';
+                    window.location.href = "../1practice/login.html";
                 })
                 .catch(function (logoutError) {
                     console.error("Logout error", logoutError);
-                    window.location.href = 'login.html';
+                    window.location.href = "../1practice/login.html";
                 });
         });
 

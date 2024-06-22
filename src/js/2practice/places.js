@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         const placeCard = document.createElement('div');
                         placeCard.classList.add('place-card');
 
-                        const imageUrl = place.imageUrl || 'default-image-url.jpg';
+                        const imageUrl = place.imageUrl || 'https://cdn-icons-png.flaticon.com/512/2555/2555595.png';
                         const name = place.name || 'Unnamed Place';
                         const description = place.description || 'No description available';
                         const categories = place.categories || 'No categories';
@@ -194,9 +194,9 @@ function deletePlace(placeId) {
     Backendless.Data.of('Place').remove(placeId)
         .then(function () {
             showPopup('Place deleted successfully!');
-            // setTimeout(() => {
-            //     window.location.href = 'places.html';
-            // }, 3000);
+            setTimeout(() => {
+                window.location.href = 'places.html';
+            }, 3000);
             console.log('Place deleted successfully');
         })
         .catch(function (error) {

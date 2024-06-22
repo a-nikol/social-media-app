@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(function (currentUser) {
             if (!currentUser) {
                 alert("User not logged in");
-                window.location.href = 'login.html';
+                window.location.href = "../1practice/login.html";
                 return;
             }
 
             const profileLink = document.getElementById('profileLink');
             const email = currentUser.email.replace(/[@.]/g, '_');
-            profileLink.href = `profile.html?email=${currentUser.email}`;
+            //profileLink.href = `profile.html?email=${currentUser.email}`;
 
             const folderContentList = document.getElementById('folderContentList');
             let currentItem = null;

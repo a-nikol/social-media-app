@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         .then(function () {
                             successMessage.innerText = 'Password reset email has been sent to your email address. Redirecting to login page in 3 seconds...';
                             setTimeout(() => {
-                                window.location.href = 'login.html';
+                                window.location.href = "../1practice/login.html";
                             }, 3000);
 
                         })

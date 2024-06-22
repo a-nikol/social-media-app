@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(function(currentUser) {
             if (!currentUser) {
                 alert("User not logged in");
-                window.location.href = 'login.html';
+                window.location.href = "../1practice/login.html";
                 return;
             }
 
@@ -59,11 +59,11 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Error fetching user data", error);
             Backendless.UserService.logout()
                 .then(function() {
-                    window.location.href = 'login.html';
+                    window.location.href = "../1practice/login.html";
                 })
                 .catch(function(logoutError) {
                     console.error("Logout error", logoutError);
-                    window.location.href = 'login.html';
+                    window.location.href = "../1practice/login.html";
                 });
         });
 });
