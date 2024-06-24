@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Password | SocioHub</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/profile-edit.css" type="text/css">
-    <link rel="stylesheet" href="../../css/styles.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Friends | SocioHub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/friends.css" type="text/css">
+    <link rel="stylesheet" href="../../css/styles.css" type="text/css">
 </head>
 <body>
 <header>
@@ -25,38 +25,44 @@
 </header>
 <div class="container">
     <div class="title">
-        <button id="backButton" onclick="window.location.href='profile.html'"><i class="fas fa-arrow-left"></i></button>
-        <span id="titleText">Change Password</span>
+        <div class="left-section">
+            <span id="titleText">Friend Invites</span>
+        </div>
     </div>
+
     <div class="content">
-        <form id="editPasswordForm">
-            <div class="form-group">
-                <label for="oldPassword">Old Password:</label>
-                <input type="password" id="oldPassword">
+        <div id="nameSearchContainer" class="search-section">
+            <div class="search-section-inside">
+                <input type="text" id="emailInput" placeholder="Add a friend by email" style="flex: 1;">
+                <button id="addFriendButton">Add</button>
             </div>
-            <div class="form-group">
-                <label for="newPassword">New Password:</label>
-                <input type="password" id="newPassword">
-            </div>
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" id="confirmPassword">
-            </div>
-            <div class="button-container">
-                <div class="button">
-                    <input type="submit" value="Save Changes">
-                </div>
-            </div>
-        </form>
+        </div>
+    </div>
+
+    <hr style="margin-bottom: 20px">
+
+    <div class="invites-for-me">
+        <h2>Invites for Me</h2>
+        <div id="invitedFriendsContainer"></div>
+    </div>
+
+
+    <hr style="margin: 20px 0">
+
+    <div class="pending-invites">
+        <h2>Pending Invites</h2>
+        <div id="pendingFriendsContainer"></div>
     </div>
 </div>
+</div>
+
 <div id="overlay" class="hidden"></div>
 <div id="popup" class="hidden">
     <p id="popupMessage"></p>
     <p id="closeMessage"></p>
 </div>
 <script src="https://api.backendless.com/sdk/js/latest/backendless.min.js"></script>
-<script src="../../js/2practice/profile-edit-password.js" defer></script>
+<script src="../../js/3practice/friends-invites.js" defer></script>
 <script src="../../js/app.js" defer></script>
 </body>
 </html>

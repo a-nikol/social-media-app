@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     Backendless.UserService.getCurrentUser()
         .then(function (currentUser) {
             if (!currentUser) {
@@ -60,21 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (trackLocationCheckbox.checked) {
                 startTrackingLocation(currentUser);
             }
-
-            // const fileInput = document.getElementById('fileInput');
-            // fileInput.addEventListener('change', function () {
-            //     const file = fileInput.files[0];
-            //     if (file) {
-            //         uploadProfilePicture(file, email)
-            //             .then(response => {
-            //                 console.log('Profile picture uploaded successfully:', response);
-            //             })
-            //             .catch(error => {
-            //                 console.error('Error uploading profile picture:', error);
-            //             });
-            //     }
-            // });
-
         })
         .catch(function (error) {
             console.error("Error fetching user data or schema", error);
@@ -94,7 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const fileInfoArray = [];
 
             for (const extension of fileExtensions) {
-                const regexPattern = extension.replace('*', '').split('').map(char => `[${char.toLowerCase()}${char.toUpperCase()}]`).join('');
+                const regexPattern = extension.replace('*', '').split('')
+                    .map(char => `[${char.toLowerCase()}${char.toUpperCase()}]`).join('');
                 const files = await Backendless.Files.listing(mainFolderPath, `*${regexPattern}`, true);
                 fileInfoArray.push(...files);
             }
@@ -143,28 +130,57 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    const logger = Backendless.Logging.getLogger('GeolocationLogger');
     async function startTrackingLocation(currentUser) {
         if (navigator.geolocation) {
             const updateLocation = async () => {
-                navigator.geolocation.getCurrentPosition(async (position) => {
-                    const {latitude, longitude} = position.coords;
-                    const point = new Backendless.Data.Point()
-                        .setLatitude(latitude)
-                        .setLongitude(longitude);
-                    currentUser.my_location = point;
-                    try {
-                        await Backendless.Data.of('Users').save(currentUser);
-                        console.log("Location updated:", point);
-                    } catch (error) {
-                        console.error("Error updating location:", error);
-                    }
-                });
+                try {
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            const { latitude, longitude } = position.coords;
+                            const point = new Backendless.Data.Point()
+                                .setLatitude(latitude)
+                                .setLongitude(longitude);
+                            currentUser.my_location = point;
+                            try {
+                                await Backendless.Data.of('Users').save(currentUser);
+                                console.log("Location updated:", point);
+                            } catch (error) {
+                                logger.error(`Error updating location for user ${currentUser.email}. Error: ${error.message}`);
+                            }
+                        },
+                        (error) => {
+                            logger.error(`Error obtaining location for user ${currentUser.email}. Error: ${error.message}`);
+                        }
+                    );
+                } catch (error) {
+                    logger.error(`Error calling getCurrentPosition for user ${currentUser.email}. Error: ${error.message}`);
+                }
             };
+
+        // if (navigator.geolocation) {
+        //     const updateLocation = async () => {
+        //         navigator.geolocation.getCurrentPosition(async (position) => {
+        //             const {latitude, longitude} = position.coords;
+        //             const point = new Backendless.Data.Point()
+        //                 .setLatitude(latitude)
+        //                 .setLongitude(longitude);
+        //             currentUser.my_location = point;
+        //             try {
+        //                 await Backendless.Data.of('Users').save(currentUser);
+        //                 console.log("Location updated:", point);
+        //             } catch (error) {
+        //                 console.error("Error updating location:", error);
+        //                 logger.error(`Error updating location for user ${email}. Error: ${error.message}`);
+        //             }
+        //         }).catch;
+        //     };
             updateLocation();
             // Updating location every minute
             currentUser.locationTrackingInterval = setInterval(updateLocation, 60000);
         } else {
             alert("Geolocation is not supported by this browser.");
+            logger.error(`Error setting location - geolocation is not supported by this browser.`);
         }
     }
 

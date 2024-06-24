@@ -16,44 +16,6 @@ body {
     position: relative;
 }
 
-header {
-    width: 100%;
-    background-color: #fff;
-    padding: 10px 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header nav {
-    display: flex;
-    align-items: center;
-}
-
-header nav a, header a#logout {
-    margin: 0 10px;
-    background: white;
-    border-radius: 5px;
-    padding: 10px 20px;
-    color: #9b59b6;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-header nav a:hover, header a#logout:hover {
-    background: #71b7e6;
-    color: white;
-}
-
-header a#logout {
-    margin-left: auto;
-}
-
 .container {
     max-width: 800px;
     width: 100%;

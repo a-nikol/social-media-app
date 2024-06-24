@@ -39,7 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     email: document.getElementById('email').value,
                     country: document.getElementById('country').value,
                     birthdate: birthdate,
-                    gender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : currentUser.gender,
+                    gender: document.querySelector('input[name="gender"]:checked') ?
+                        document.querySelector('input[name="gender"]:checked').value : currentUser.gender,
                 };
 
                 Backendless.UserService.update(updatedUser)

@@ -445,7 +445,7 @@ body {
     color: #9b59b6;
 }
 
-#closeMessage{
+#closeMessage {
     font-size: 14px;
     color: #aaa;
     margin-top: 20px;
@@ -472,18 +472,18 @@ body {
     margin-bottom: 10px;
 }
 
-.likes-count{
+.likes-count {
     margin: 0 30px;
 }
 
 #searchByNameButton,
-#searchByCategoryButton{
+#searchByCategoryButton {
     margin-bottom: 20px;
 }
 
 #searchByNameButton,
 #searchByCategoryButton,
-#customLocationButton{
+#customLocationButton {
     cursor: pointer;
 }
 
@@ -546,10 +546,6 @@ body {
     gap: 10px;
 }
 
-.search-section {
-    display: none;
-}
-
 .search-section .search-section-inside {
     width: 100%;
     display: flex;
@@ -585,9 +581,9 @@ body {
     margin: 0;
 }
 
-.search-section {
-    display: none;
-}
+/*.search-section {*/
+/*    display: none;*/
+/*}*/
 
 .search-section .search-section-inside {
     display: flex;
@@ -613,4 +609,112 @@ body {
 
 .button-container-search button:hover {
     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+
+.invites-for-me,
+.pending-invites {
+    margin-bottom: 20px;
+}
+
+.invites-for-me h2,
+.pending-invites h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: initial;
+}
+
+#friendsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#invitedFriendsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.friend-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.friend-pfp {
+    margin-right: 10px;
+}
+
+.friend-pfp img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.friend-details {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+.friend-email,
+.friend-name {
+    margin: 0;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: auto;
+    margin-top: 0;
+}
+
+.accept-button,
+.delete-button,
+.pending-button {
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.accept-button {
+    background-color: #49bf68;
+}
+
+.accept-button:hover {
+    background-color: darkgreen;
+}
+
+.delete-button {
+    background-color: #e74c3c;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+#addFriendButton {
+    cursor: pointer;
+    height: 45px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+
+    width: 100px;
+    margin: 0;
 }

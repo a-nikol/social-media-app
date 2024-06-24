@@ -105,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             });
                         } else {
                             const likeButton = placeCard.querySelector('.like-button');
-
                             likeButton.addEventListener('click', debounce(function () {
                                 checkIfLiked(place.objectId, currentUser.objectId, likeButton);
                             }, 1000));
@@ -148,22 +147,6 @@ async function checkIfLiked(placeId, userId, likeButton) {
     }
 }
 
-async function addLike(placeId, userId, likeButton) {
-    try {
-        const newLike = {
-            ownerId: userId
-        };
-        const savedLike = await Backendless.Data.of('Like').save(newLike);
-        await Backendless.Data.of('Like').setRelation({objectId: savedLike.objectId}, 'placeId', [{objectId: placeId}])
-
-        await updateLikesCount(placeId, likeButton, 1);
-        likeButton.classList.add('liked');
-
-    } catch (error) {
-        console.error('Error adding like:', error);
-    }
-}
-
 async function removeLike(likeId, placeId, likeButton) {
     try {
         await Backendless.Data.of('Like').remove(likeId);
@@ -172,6 +155,23 @@ async function removeLike(likeId, placeId, likeButton) {
         // alert('Like removed successfully!');
     } catch (error) {
         console.error('Error removing like:', error);
+    }
+}
+
+async function addLike(placeId, userId, likeButton) {
+    try {
+        const newLike = {
+            ownerId: userId
+        };
+        const savedLike = await Backendless.Data.of('Like').save(newLike);
+        await Backendless.Data.of('Like').setRelation({objectId: savedLike.objectId},
+            'placeId', [{objectId: placeId}])
+
+        await updateLikesCount(placeId, likeButton, 1);
+        likeButton.classList.add('liked');
+
+    } catch (error) {
+        console.error('Error adding like:', error);
     }
 }
 
@@ -203,16 +203,4 @@ function deletePlace(placeId) {
             showPopup(error);
             console.error('Error deleting place:', error);
         });
-}
-
-function debounce(func, delay) {
-    let timeout;
-    return function () {
-        const context = this;
-        const args = arguments;
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            func.apply(context, args);
-        }, delay);
-    };
 }

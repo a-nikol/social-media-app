@@ -1,5 +1,6 @@
-
 document.addEventListener('DOMContentLoaded', function () {
+
+    const logger = Backendless.Logging.getLogger('FileSaveLogger');
 
     Backendless.UserService.getCurrentUser()
         .then(function (currentUser) {
@@ -9,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            const profileLink = document.getElementById('profileLink');
             const email = currentUser.email.replace(/[@.]/g, '_');
+            //const profileLink = document.getElementById('profileLink');
             //profileLink.href = `profile.html?email=${currentUser.email}`;
 
             const folderContentList = document.getElementById('folderContentList');
@@ -289,13 +290,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (file) {
                     const fileName = file.name;
 
-                    // List the contents of the current folder
                     Backendless.Files.listing(currentFolderPath)
                         .then(function (files) {
                             const fileExists = files.some(fileItem => fileItem.name === fileName);
-
                             if (fileExists) {
-                                showPopup("A file with the same name already exists in this folder.");
+                                const fileExistsMessage = "A file with the same name already exists in this folder."
+                                showPopup(fileExistsMessage);
+                                logger.error(`File upload failed for user: ${email}. Error: ${fileExistsMessage}`);
                             } else {
                                 Backendless.Files.upload(file, currentFolderPath, true)
                                     .then(function (uploadedFile) {
@@ -304,6 +305,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     })
                                     .catch(function (error) {
                                         showPopup("Error uploading file: " + error.message);
+                                        logger.error(`File upload failed for user: ${email}. Error: ${error.message}`);
                                     });
                             }
                         })

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Home | SocioHub</title>
+    <title>Feedback | SocioHub</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/home.css" type="text/css">
     <link rel="stylesheet" href="../../css/styles.css" type="text/css">
@@ -26,24 +26,31 @@
 <div class="container">
     <div class="title">
         <div class="left-section">
-            <button id="backButton"><i class="fas fa-arrow-left"></i></button>
-            <span id="titleText">My Files</span>
-        </div>
-        <div class="right-section" id="right-section">
-            <button id="uploadButton">Upload File</button>
-            <button id="createDirButton">+</button>
+            <span id="titleText">Feedback</span>
         </div>
     </div>
     <div class="content">
-        <ul id="folderContentList"></ul>
-        <input type="file" id="fileInput" style="display: none;">
+        <form id="feedback-form">
+            <div class="form-group-type">
+                <label for="feedback-type">Type of Feedback:</label>
+                <select id="feedback-type" name="feedbackType" class="styled-select">
+                    <option value="default" disabled selected>Select type of feedback</option>
+                    <option value="error">Error</option>
+                    <option value="suggestion">Suggestion</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="feedback-message">Message:</label>
+                <textarea class="styled-textarea" id="feedback-message" name="message" rows="4" cols="50"
+                          placeholder="Write your message here..."></textarea>
+            </div>
+            <br>
+            <div class="feedback-button-container">
+                <button type="button" id="sendFeedbackButton">Send Feedback</button>
+            </div>
+        </form>
     </div>
-</div>
-<div id="contextMenu" class="context-menu">
-    <ul>
-        <li id="shareOption">Share</li>
-        <li id="renameOption">Rename</li>
-    </ul>
 </div>
 
 <div id="overlay" class="overlay hidden"></div>
@@ -53,18 +60,8 @@
         <p id="closeMessage"></p>
     </div>
 </div>
-
-<div id="popupOverlay" class="popup-overlay hidden"></div>
-<div id="promptPopup" class="popup hidden prompt-popup">
-    <div class="popup-content">
-        <p id="popupPrompt"></p>
-        <input type="text" id="promptInput" placeholder="Input">
-        <button id="promptSubmit">Ok</button>
-    </div>
-</div>
-
 <script src="https://api.backendless.com/sdk/js/latest/backendless.min.js"></script>
-<script src="../../js/1practice/home.js" defer></script>
+<script src="../../js/3practice/feedback.js" defer></script>
 <script src="../../js/app.js" defer></script>
 </body>
 </html>

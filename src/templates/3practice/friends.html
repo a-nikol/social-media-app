@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Places | SocioHub</title>
+    <title>My Friends | SocioHub</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/places.css" type="text/css">
+    <link rel="stylesheet" href="../../css/friends.css" type="text/css">
     <link rel="stylesheet" href="../../css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
 <header>
@@ -26,16 +28,36 @@
 <div class="container">
     <div class="title">
         <div class="left-section">
-            <span id="titleText">My Places</span>
+            <span id="titleText">My Friends</span>
         </div>
         <div class="right-section" id="right-section">
-            <button id="findPlacesButton" onclick="window.location.href='places-find.html'">Find Places</button>
-            <button id="addPlaceButton" onclick="window.location.href='places-add.html'">Add Place</button>
+            <button id="addPlaceButton" onclick="window.location.href='friends-invites.html'">Invites</button>
         </div>
     </div>
+
     <div class="content">
-        <div id="placesContainer"></div>
+        <div id="friendSearchContainer" class="search-section">
+            <div style="margin-bottom: 20px"><label for="friendName">See your friend's location:</label></div>
+            <div class="search-section-inside">
+                <input type="text" id="friendName" placeholder="Email" style="flex: 1;">
+                <input type="number" id="searchRadius" placeholder="Radius in km" style="flex: 1" ;>
+                <button id="customLocationButton"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="coordinates">
+                <input type="text" id="latitude" placeholder="Enter latitude" class="hidden">
+                <input type="text" id="longitude" placeholder="Enter longitude" class="hidden">
+            </div>
+            <div id="map"></div>
+        </div>
     </div>
+
+    <hr style="margin-bottom: 20px">
+
+
+    <div id="friendsContainer"></div>
+
+</div>
+
 </div>
 <div id="overlay" class="hidden"></div>
 <div id="popup" class="hidden">
@@ -43,7 +65,7 @@
     <p id="closeMessage"></p>
 </div>
 <script src="https://api.backendless.com/sdk/js/latest/backendless.min.js"></script>
-<script src="../../js/2practice/places.js" defer></script>
+<script src="../../js/3practice/friends.js" defer></script>
 <script src="../../js/app.js" defer></script>
 </body>
 </html>

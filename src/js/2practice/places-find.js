@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (placeName) {
             searchPlacesByName();
         } else {
-            alert('Please enter a place name to search.');
+            showPopup('Please enter a place name to search.');
         }
     });
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (categoryName) {
             searchPlacesByCategory();
         } else {
-            alert('Please enter a category name to search.');
+            showPopup('Please enter a category name to search.');
         }
     });
 
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const lng = parseFloat(longitudeInput.value);
 
         if (isNaN(radius) || isNaN(lat) || isNaN(lng)) {
-            alert('Please enter valid radius, latitude, and longitude.');
+            showPopup('Please enter valid radius, latitude, and longitude.');
         } else {
             searchPlacesByRadius(lat, lng, radius);
         }

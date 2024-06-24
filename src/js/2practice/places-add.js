@@ -172,14 +172,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Adding existing tags, or creating new
                     const tagName = tags[tagIndex];
                     try {
-                        const existingTags = await Backendless.Data.of('Category').find({ where: `name = '${tagName}'` });
+                        const existingTags = await Backendless.Data.of('Category')
+                            .find({ where: `name = '${tagName}'` });
                         let tagObj;
                         if (existingTags.length > 0) {
                             tagObj = existingTags[0];
                         } else {
                             tagObj = await Backendless.Data.of('Category').save({ name: tagName });
                         }
-                        await Backendless.Data.of('Place').addRelation(savedPlace.objectId, 'categoryId', [tagObj.objectId]);
+                        await Backendless.Data.of('Place').addRelation(savedPlace.objectId,
+                            'categoryId', [tagObj.objectId]);
                         handleTags(tagIndex + 1);
                     } catch (error) {
                         console.error('Error handling tags:', error);

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const errorMessage = document.getElementById('errorMessage');
+        const logger = Backendless.Logging.getLogger('LoginLogger');
 
         Backendless.UserService.login(email, password, true)
             .then(function (loggedInUser) {
@@ -16,9 +17,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else {
                     errorMessage.innerText = 'Login failed: ' + error.message;
                 }
+                logger.error(`Login failed for user: ${email}. Error: ${error.message}`);
             });
     });
 });
+
+// Configure log buffer policy
+// Backendless.Logging.setLogReportingPolicy(10, 30);
 
 // document.addEventListener('DOMContentLoaded', function () {
 //
