@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    updateOnlineUsersCount();
     const logger = Backendless.Logging.getLogger('FileSaveLogger');
 
     Backendless.UserService.getCurrentUser()

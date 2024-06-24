@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    updateOnlineUsersCount();
+
     document.getElementById('loginForm').addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -21,6 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 });
+
+
+
 
 // Configure log buffer policy
 // Backendless.Logging.setLogReportingPolicy(10, 30);
